@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
+import { Metadata } from "next";
 
 const roboto = Roboto({
   weight: ["500", "600", "700"],
@@ -11,7 +12,7 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Notes App",
   description: "A simple web app to create, manage, and delete notes easily.",
   keywords: ["note", "reminder"],

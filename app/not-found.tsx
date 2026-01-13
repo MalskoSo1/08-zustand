@@ -1,6 +1,7 @@
+import { Metadata } from "next";
 import css from "./not-found.module.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Page Not Found | Notes App",
   description: "The page you are looking for does not exist or has been moved.",
   keywords: [

@@ -11,7 +11,9 @@ interface NotesFilterProps {
   params: Promise<{ slug?: string[] }>;
 }
 
-export async function generateMetadata({ params }: NotesFilterProps) {
+export async function generateMetadata({
+  params,
+}: NotesFilterProps): Promise<Metadata> {
   const { slug } = await params;
   const currentTag = slug?.[0];
 

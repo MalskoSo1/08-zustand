@@ -1,7 +1,8 @@
+import { Metadata } from "next";
 import css from "./page.module.css";
 import NoteForm from "@/components/NoteForm/NoteForm";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Create Note | Notes App",
   description:
     "Add a new note to your Notes App. Enter title, content, and choose a tag.",

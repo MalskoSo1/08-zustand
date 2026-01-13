@@ -12,7 +12,9 @@ interface PostDetailsProps {
   params: Promise<{ id: string }>;
 }
 
-export async function generateMetadata({ params }: PostDetailsProps) {
+export async function generateMetadata({
+  params,
+}: PostDetailsProps): Promise<Metadata> {
   const { id } = await params;
   const note: Note = await fetchNoteById(id);
 
