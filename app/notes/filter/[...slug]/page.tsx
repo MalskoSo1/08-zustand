@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: NotesFilterProps) {
     openGraph: {
       title: `Notes - ${tagName} | Notes App`,
       description: `View all notes tagged as ${tagName}.`,
-      url: `https://07-routing-nextjs-sigma-nine.vercel.app/notes/filter/${
+      url: `https://08-zustand-brown-gamma.vercel.app/notes/filter/${
         currentTag || "all"
       }`,
       siteName: "Notes App",

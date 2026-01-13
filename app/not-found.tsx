@@ -3,6 +3,14 @@ import css from "./not-found.module.css";
 export const metadata = {
   title: "Page Not Found | Notes App",
   description: "The page you are looking for does not exist or has been moved.",
+  keywords: [
+    "404",
+    "page not found",
+    "notes",
+    "notes app",
+    "missing page",
+    "error",
+  ],
   openGraph: {
     title: "Page Not Found | Notes App",
     description: "This page could not be found in the Notes App.",

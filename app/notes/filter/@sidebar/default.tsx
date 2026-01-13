@@ -1,27 +1,14 @@
 import Link from "next/link";
 import css from "./default.module.css";
 import { NoteTag } from "@/types/note";
-// import { useQueryClient } from "@tanstack/react-query";
 
 const tags: NoteTag[] = ["Work", "Personal", "Meeting", "Shopping", "Todo"];
 
 const SidebarNotes = () => {
-  // const queryClient = useQueryClient();
-
-  // const invalidateQueries = async () => {
-  //   await queryClient.invalidateQueries({
-  //     queryKey: ["getNotes"],
-  //   });
-  // };
-
   return (
     <ul className={css.menuList}>
       <li className={css.menuItem}>
-        <Link
-          // onClick={invalidateQueries}
-          href="/notes/filter/all"
-          className={css.menuLink}
-        >
+        <Link href="/notes/filter/all" className={css.menuLink}>
           All notes
         </Link>
       </li>
@@ -29,7 +16,6 @@ const SidebarNotes = () => {
       {tags.map((tag) => (
         <li key={tag} className={css.menuItem}>
           <Link
-            // onClick={invalidateQueries}
             href={`/notes/filter/${tag.toLowerCase()}`}
             className={css.menuLink}
           >

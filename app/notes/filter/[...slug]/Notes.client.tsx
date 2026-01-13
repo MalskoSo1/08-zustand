@@ -5,12 +5,11 @@ import css from "./page.module.css";
 import { fetchNotes } from "../../../../lib/api";
 import { useState } from "react";
 import Pagination from "../../../../components/Pagination/Pagination";
-import Modal from "../../../../components/Modal/Modal";
-import NoteForm from "../../../../components/NoteForm/NoteForm";
 import SearchBox from "../../../../components/SearchBox/SearchBox";
 import { useDebounce } from "use-debounce";
 import Loader from "@/components/Loader/Loader";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
+import Link from "next/link";
 
 interface NotesClientProps {
   currentTag?: string;
@@ -19,7 +18,6 @@ interface NotesClientProps {
 const NotesClient = ({ currentTag }: NotesClientProps) => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [debouncedSearch] = useDebounce(search, 700);
 
   const perPage = 12;
@@ -40,14 +38,6 @@ const NotesClient = ({ currentTag }: NotesClientProps) => {
     setPage(1);
   };
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
@@ -59,9 +49,9 @@ const NotesClient = ({ currentTag }: NotesClientProps) => {
             setPage={setPage}
           />
         )}
-        <button className={css.button} onClick={openModal}>
+        <Link href="/notes/action/create" className={css.button}>
           Create note +
-        </button>
+        </Link>
       </header>
       {data && data?.notes.length > 0 && <NoteList notes={data.notes} />}
       {data?.notes.length === 0 && search !== "" && (
@@ -74,12 +64,6 @@ const NotesClient = ({ currentTag }: NotesClientProps) => {
         <ErrorMessage message={"There was an error, please try again..."} />
       )}
       {!isError && isLoading && <Loader />}
-
-      {isModalOpen && (
-        <Modal onClose={closeModal}>
-          <NoteForm setIsModalOpen={setIsModalOpen} />
-        </Modal>
-      )}
     </div>
   );
 };

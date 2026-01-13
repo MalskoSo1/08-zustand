@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PostDetailsProps) {
     openGraph: {
       title: note.title + " | Notes App",
       description: note.content.slice(0, 150),
-      url: `https://07-routing-nextjs-sigma-nine.vercel.app/notes/${note.id}`,
+      url: `https://08-zustand-brown-gamma.vercel.app/notes/${note.id}`,
       siteName: "Notes App",
       type: "article",
       images: [
