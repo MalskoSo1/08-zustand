@@ -5,9 +5,44 @@ import {
   HydrationBoundary,
   QueryClient,
 } from "@tanstack/react-query";
+import { Metadata } from "next";
 
 interface NotesFilterProps {
   params: Promise<{ slug?: string[] }>;
+}
+
+export async function generateMetadata({ params }: NotesFilterProps) {
+  const { slug } = await params;
+  const currentTag = slug?.[0];
+
+  const tagName =
+    currentTag && currentTag.toLowerCase() !== "all"
+      ? currentTag.charAt(0).toUpperCase() + currentTag.slice(1).toLowerCase()
+      : "All";
+
+  const metadata: Metadata = {
+    title: `Notes - ${tagName} | Notes App`,
+    description: `View all notes tagged as ${tagName}.`,
+    keywords: ["notes", "reminder", tagName],
+    openGraph: {
+      title: `Notes - ${tagName} | Notes App`,
+      description: `View all notes tagged as ${tagName}.`,
+      url: `https://07-routing-nextjs-sigma-nine.vercel.app/notes/filter/${
+        currentTag || "all"
+      }`,
+      siteName: "Notes App",
+      type: "website",
+      images: [
+        {
+          url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+          width: 1200,
+          height: 630,
+          alt: `Notes App - ${tagName}`,
+        },
+      ],
+    },
+  };
+  return metadata;
 }
 
 const NotesFilter = async ({ params }: NotesFilterProps) => {

@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: "Page Not Found | Notes App",
     description: "This page could not be found in the Notes App.",
-    url: "https://07-routing-nextjs-sigma-nine.vercel.app/",
+    url: "https://08-zustand-brown-gamma.vercel.app/",
     siteName: "Notes App",
     type: "website",
     images: [
